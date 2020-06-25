@@ -1,0 +1,39 @@
+.search-container {
+	
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  width: 400px;
+  margin: 0 auto;
+  input {
+    width: 100%;text-align: center;
+    background-color: rgba(255, 255, 255, 0.164);
+    height: 40px;
+    padding: 10px;
+    border: 1px solid grey;
+    color: #441515;
+    font-size: 1.2rem;
+    font-weight: 1.2rem;
+    border-radius: 5px;
+    font-family: 'Raleway', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .suggestions {
+	  box-shadow: 0px 0px 5px 0px #ccc;
+    z-index: 999;
+    background: white;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: -50px;
+    top: 44px;
+    span {
+	  padding: 10px;
+	  &:hover{
+		  cursor: pointer;
+		  background: #eee;
+	  }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+//SETUP
+@import 'setup/typography';
+@import 'setup/variables';
+
+//BASICS
+@import 'basics/Base';
+
+// COMPONENTS
+@import 'components/Header';
+@import 'components/MainWeather';
+@import 'components/MainFavorites';
+@import 'components/SearchCity';
+@import 'components/FavoriteCard';
+@import 'components/Autocomplete';
+
+
+//PAGES
+@import 'views/FavoritesPage';

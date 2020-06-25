@@ -1,23 +1,22 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import AppHeader from "./cmps/Header";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomePage from "./views/HomePage";
+import FavoritesPage from "./views/FavoritesPage";
+
+import "./styles/global.scss";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>check num #### </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <AppHeader />
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/favoritesPage" exact component={FavoritesPage} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
