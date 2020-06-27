@@ -23,9 +23,11 @@ export const getLocationRequest = (userInput = "tel aviv") => {
   };
 };
 
-export const getCurrentWeather = () => {
+export const getCurrentWeather = (inputValue) => {
+  console.log("getCurrentWeather -> inputValue", inputValue)
   return async (dispatch) => {
     const data = await getDayWeather();
+    console.log("getCurrentWeather -> data", data)
     return dispatch({
       type: GET_CITY_CURRENT_WEATHER,
       payload: data.data.DailyForecasts,

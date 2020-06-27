@@ -18,7 +18,7 @@ class TodayForecast extends React.Component {
             <div className="date">
               <Moment format="dddd">{location.Date}</Moment>{" "}
               <Moment format="ll">{location.Date}</Moment>
-              <div className="city">city[0].LocalizedName</div>
+              <div className="city">{city[0].LocalizedName}</div>
               <div className="weather-details">
                 <img
                   src={`https://developer.accuweather.com/sites/default/files/${
@@ -60,6 +60,7 @@ class TodayForecast extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log("mapStateToProps -> state", state)
   return {
     location: state.forecast[0],
     city: state.locations,
