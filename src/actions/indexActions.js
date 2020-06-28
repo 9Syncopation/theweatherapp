@@ -33,7 +33,7 @@ export const getLocationRequest = (userInput = "tel aviv") => {
 //   };
 // };
 export const fiveDaysForecast = (userSelection= "215854") => {
-	debugger
+	// debugger
   console.log("fiveDaysForecast -> userSelection", userSelection)
   return async (dispatch) => {
     const data = await getFiveDaysForecast(userSelection);

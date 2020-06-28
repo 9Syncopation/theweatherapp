@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
 
 class MainWeather extends React.Component {
   render() {
-    console.log(this.props);
+    console.log('Props', this.props);
     if (!this.props.forecasts) return <h1>Loading</h1>;
     return (
       <section className="screen-layout">

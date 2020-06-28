@@ -26,7 +26,7 @@ class Autocomplete extends React.Component {
       async () => {
         // const selected =( this.state.selected ? this.state.selected : "215854")
         const selected = this.state.selected;
-        debugger;
+        // debugger;
         console.log("Autocomplete -> onSelectHandle -> selected", selected);
         fiveDaysForecast(selected);
       }
@@ -101,6 +101,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(null, mapDispatchToProps )(Autocomplete);
+export default connect(null, mapDispatchToProps)(Autocomplete);
 
 // export default Autocomplete;
