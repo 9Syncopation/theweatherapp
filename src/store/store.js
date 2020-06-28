@@ -4,7 +4,7 @@ import rootReducer from "../reducers/indexReducers";
 import {
   getLocationRequest,
   fiveDaysForecast,
-  getCurrentWeather,
+//   getCurrentWeather,
 } from "../actions/indexActions";
 // import { composeWithDevTools } from "redux-devtools-extension";
 
@@ -13,12 +13,12 @@ const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(thunk))
 );
-const data = getLocationRequest();
-const currentDay = getCurrentWeather();
+const locationRequest = getLocationRequest();
+// const currentDay = getCurrentWeather();
 const fiveDays = fiveDaysForecast();
 
-store.dispatch(data);
-store.dispatch(currentDay);
+store.dispatch(locationRequest);
+// store.dispatch(currentDay);
 store.dispatch(fiveDays);
 
 // store.subscribe(()=> {

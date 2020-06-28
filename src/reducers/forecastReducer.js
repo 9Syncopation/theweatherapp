@@ -1,6 +1,6 @@
 import {
   ADD_FIVEDAYSFORECAST,
-  GET_CITY_CURRENT_WEATHER,
+//   GET_CITY_CURRENT_WEATHER,
 } from "../actions/types.js";
 
 export function forecastReducer(state = [], action) {
@@ -12,12 +12,12 @@ export function forecastReducer(state = [], action) {
       return state;
   }
 }
-export function dayForecastReducer(state = [], action) {
-  switch (action.type) {
-    case GET_CITY_CURRENT_WEATHER:
-      return [{ ...action.payload }];
+// export function dayForecastReducer(state = [], action) {
+//   switch (action.type) {
+//     case GET_CITY_CURRENT_WEATHER:
+//       return [{ ...action.payload }];
 
-    default:
-      return state;
-  }
-}
+//     default:
+//       return state;
+//   }
+// }

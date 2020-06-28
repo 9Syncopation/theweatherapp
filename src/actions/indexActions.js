@@ -1,7 +1,6 @@
 import {
   GET_LOCATION_WEATHER_REQUEST,
-//   GET_CITY_KEY,
-  GET_CITY_CURRENT_WEATHER,
+//   GET_CITY_CURRENT_WEATHER,
   ADD_FIVEDAYSFORECAST,
   ADD_FAVORITE_LOCATION,
   REMOVE_FAVORITE_LOCATION,
@@ -9,11 +8,11 @@ import {
 import {
   getLocation,
   getFiveDaysForecast,
-  getDayWeather,
-  getCityKey,
+//   getDayWeather,
 } from "../services/weatherApiService";
 
 export const getLocationRequest = (userInput = "tel aviv") => {
+	// debugger
   return async (dispatch) => {
     const data = await getLocation(userInput);
     return dispatch({
@@ -23,20 +22,22 @@ export const getLocationRequest = (userInput = "tel aviv") => {
   };
 };
 
-export const getCurrentWeather = (inputValue) => {
-  console.log("getCurrentWeather -> inputValue", inputValue)
+// export const getCurrentWeather = (userSelection ) => {
+//   console.log("getCurrentWeather -> userSelection", userSelection)
+//   return async (dispatch) => {
+//     const data = await getDayWeather(userSelection);
+//     return dispatch({
+//       type: GET_CITY_CURRENT_WEATHER,
+//       payload: data.data.DailyForecasts,
+//     });
+//   };
+// };
+export const fiveDaysForecast = (userSelection= "215854") => {
+	debugger
+  console.log("fiveDaysForecast -> userSelection", userSelection)
   return async (dispatch) => {
-    const data = await getDayWeather();
-    console.log("getCurrentWeather -> data", data)
-    return dispatch({
-      type: GET_CITY_CURRENT_WEATHER,
-      payload: data.data.DailyForecasts,
-    });
-  };
-};
-export const fiveDaysForecast = () => {
-  return async (dispatch) => {
-    const data = await getFiveDaysForecast();
+    const data = await getFiveDaysForecast(userSelection);
+    console.log("fiveDaysForecast -> data", data)
     return dispatch({
       type: ADD_FIVEDAYSFORECAST,
       payload: data.data.DailyForecasts,

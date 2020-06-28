@@ -1,11 +1,14 @@
 import React from "react";
 import {
   getAutocompleteSuggestions,
-  getDayWeather,
-  getLocation,
+  //   getDayWeather,
+  //   getLocation,
 } from "../services/weatherApiService";
-import { getCurrentWeather } from "../actions/indexActions";
-import { connect } from "react-redux";
+import { fiveDaysForecast } from "../actions/indexActions";
+import {
+  connect,
+  // useDispatch
+} from "react-redux";
 
 class Autocomplete extends React.Component {
   constructor() {
@@ -19,45 +22,42 @@ class Autocomplete extends React.Component {
 
   onSelectHandle = (key) => {
     this.setState(
-      { ...this.state, suggestions: [], selected: key},
+      { ...this.state, suggestions: [], selected: key },
       async () => {
-		debugger;
-		const selected =( this.state.selected ? this.state.selected : "215854")
-		console.log("Autocomplete -> onSelectHandle -> selected", selected)
-		
-		       this.props.getCurrentWeather(selected)
-
-
-
-
-
-		// getCurrentWeather(this.state.selected) 
-        // const weather = await getDayWeather(this.state.selected);
-		// console.log("Autocomplete -> onSelectHandle -> weather", weather);
-        //   const result =await getLocation(this.state.selected)
-        //   const res = await getDayWeather( result.data[0].Key);
-        //   const res = result.data[0].Key
-        //   console.log("Autocomplete -> onSelectHandle -> res", res)
-        //   console.log("Autocomplete -> onSelectHandle -> result", result)
+        // const selected =( this.state.selected ? this.state.selected : "215854")
+        const selected = this.state.selected;
+        debugger;
+        console.log("Autocomplete -> onSelectHandle -> selected", selected);
+        fiveDaysForecast(selected);
       }
     );
   };
-
+  componentWillReceiveProps(nextProps) {
+    // this check makes sure that the  action is not getting called for other prop changes
+    if (this.state.selected !== nextProps.selected) {
+      fiveDaysForecast(this.state.selected);
+    }
+  }
   getSuggestions = async (event) => {
+    console.log("Autocomplete -> getSuggestions -> event", event);
     if (!event.target.value)
       return this.setState({ filter: "", suggestions: [] });
     this.setState({ ...this.state, filter: event.target.value }, () =>
       console.log(this.state)
-	);
-	console.log("Autocomplete -> getSuggestions -> this.state.filter.length", this.state.filter.length)
-	if (this.state.filter.length >1) {
-		// debugger
-		console.log('enter reques!!!!!!!!!!!t');
-		
-		const suggestions = await getAutocompleteSuggestions(this.state.filter);
-        console.log("Autocomplete -> getSuggestions -> suggestions", suggestions)
-		if (suggestions && suggestions.length>1) this.setState({ ...this.state, suggestions });
-	}
+    );
+    console.log(
+      "Autocomplete -> getSuggestions -> this.state.filter.length",
+      this.state.filter.length
+    );
+    if (this.state.filter.length > 1) {
+      // debugger
+      console.log("enter reques!!!!!!!!!!!t");
+
+      const suggestions = await getAutocompleteSuggestions(this.state.filter);
+      console.log("Autocomplete -> getSuggestions -> suggestions", suggestions);
+      if (suggestions && suggestions.length > 1)
+        this.setState({ ...this.state, suggestions });
+    }
   };
 
   render() {
@@ -94,10 +94,13 @@ class Autocomplete extends React.Component {
 //     city: state.locations,
 //   };
 // };
-const mapDispatchToProps = (dispatch) =>  ({
-	  getCurrentWeather:  () =>  dispatch( getCurrentWeather())
-})
+const mapDispatchToProps = (dispatch) => ({
+  fiveDaysForecast: () => {
+    dispatch(fiveDaysForecast());
+    console.log("dispatch", dispatch);
+  },
+});
 
-export default connect(null, mapDispatchToProps)(Autocomplete)
+export default connect(null, mapDispatchToProps )(Autocomplete);
 
 // export default Autocomplete;

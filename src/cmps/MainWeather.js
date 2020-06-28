@@ -10,14 +10,14 @@ const mapStateToProps = (state) => {
     locations: state.locations,
     favorites: state.favorites,
     forecasts: state.forecast,
-    dayForecast: state.dayForecast,
+    // dayForecast: state.dayForecast,
   };
 };
 
 class MainWeather extends React.Component {
   render() {
     console.log(this.props);
-    if (!this.props.dayForecast[0]) return <h1>Loading</h1>;
+    if (!this.props.forecasts) return <h1>Loading</h1>;
     return (
       <section className="screen-layout">
         <TodayForecast />

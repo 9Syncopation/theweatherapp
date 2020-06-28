@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import FavoriteCard from "../cmps/FavoriteCard";
-import { removeFavoriteLocation } from "../actions/indexActions";
+// import { removeFavoriteLocation } from "../actions/indexActions";
 import UtilsService from "../services/UtilsService";
 // import Card from '@material-ui/core/Card';
 // import CardActions from '@material-ui/core/CardActions';
